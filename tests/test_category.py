@@ -33,7 +33,7 @@ def first_category():
 def second_category():
     return Category(
         name="Телевизоры",
-        description="Современный телевизор, который позволяет наслаждаться просмотром, "
+        description="Современный телевизор, который позволяет наслаждаться просмотром,"
         "станет вашим другом и помощником",
         products=[
             Product('55" QLED 4K', "Фоновая подсветка", 123000.0, 7),
@@ -45,8 +45,8 @@ def second_category():
 def test_category_init(first_category, second_category):
     assert first_category.name == "Смартфоны"
     assert (
-        first_category.description == "Смартфоны, как средство не только коммуникации, "
-        "но и получения дополнительных функций для удобства жизни"
+        first_category.description == "Смартфоны, как средство не только коммуникации,"
+        " но и получения дополнительных функций для удобства жизни"
     )
     # assert len(first_category.products) == 3
 

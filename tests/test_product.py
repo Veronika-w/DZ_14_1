@@ -15,7 +15,8 @@ def product_1():
 
 @pytest.fixture
 def product_2():
-    return Product(name="Iphone 15", description="512GB, Gray space", price=210000.0, quantity=8)
+    return Product(name="Iphone 15", description="512GB, Gray space",
+                   price=210000.0, quantity=8)
 
 
 @pytest.fixture
@@ -25,6 +26,17 @@ def product_3():
         description="1024GB, Синий",
         price=31000.0,
         quantity=14,
+    )
+
+
+@pytest.fixture
+def product_fixture():
+    return Product(
+        name="Samsung Galaxy S23 Ultra",
+        description="256GB, Серый цвет, 200MP камера",
+        price="Цена не должна быть нулевая или отрицательная",
+        quantity=7
+
     )
 
 
@@ -47,3 +59,15 @@ def test_product_3(product_3):
     assert product_3.description == "1024GB, Синий"
     assert product_3.price == 31000.0
     assert product_3.quantity == 14
+
+
+
+def test_product_init(product_fixture):
+    assert product_fixture.name == "Samsung Galaxy S23 Ultra"
+    assert product_fixture.description == "256GB, Серый цвет, 200MP камера"
+    assert product_fixture.quantity == 7
+    product_fixture.price = -100
+    assert product_fixture.price == "Цена не должна быть нулевая или отрицательная"
+    product_fixture.new_product({"name": "Samsung Galaxy S23 Ultra", "description": "256GB, Серый цвет, 200MP камера", "price": 180000.0,
+         "quantity": 5})
+    assert product_fixture.name == "Samsung Galaxy S23 Ultra"
