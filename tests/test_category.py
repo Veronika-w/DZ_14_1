@@ -59,8 +59,8 @@ def test_category_init(first_category, second_category):
 
 
 def test_category_str_1(first_category):
-    assert str(first_category) == 'Смартфоны, количество продуктов: 27 шт.'
+    assert str(first_category) == "Смартфоны, количество продуктов: 27 шт."
 
 
 def test_category_str_2(second_category):
-    assert str(second_category) == 'Телевизоры, количество продуктов: 13 шт.'
+    assert str(second_category) == "Телевизоры, количество продуктов: 13 шт."
