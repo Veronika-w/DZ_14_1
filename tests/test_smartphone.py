@@ -6,13 +6,15 @@ from src.smartphone import Smartphone
 @pytest.fixture
 def product_smartphone1():
     return Smartphone(
-        "Samsung Galaxy S23 Ultra", "Samsung Galaxy S23 Ultra", 180000.0, 5, 95.5, "S23 Ultra", 256, "Серый"
+        "Samsung Galaxy S23 Ultra", "Samsung Galaxy S23 Ultra",
+        180000.0, 5, 95.5, "S23 Ultra", 256, "Серый"
     )
 
 
 @pytest.fixture
 def product_smartphone2():
-    return Smartphone("Iphone 15", "512GB, Gray space", 210000.0, 8, 98.2, "15", 512, "Gray space")
+    return Smartphone("Iphone 15", "512GB, Gray space",
+                      210000.0, 8, 98.2, "15", 512, "Gray space")
 
 
 def test_product_smartphone1(product_smartphone1):
@@ -47,6 +49,4 @@ def test_smartphone_add(product_smartphone1, product_smartphone2):
 
 def test_lawn_smartphone_add_error(product_smartphone1, product_smartphone2):
     with pytest.raises(TypeError):
-        result = product_smartphone2 + 1
-
-
+        product_smartphone2 + 1

@@ -5,12 +5,14 @@ from src.lown_grass import LawnGrass
 
 @pytest.fixture
 def lawn_grass1():
-    return LawnGrass("Газонная трава", "Элитная трава для газона", 500.0, 20, "Россия", "7 дней", "Зеленый")
+    return LawnGrass("Газонная трава", "Элитная трава для газона",
+                     500.0, 20, "Россия", "7 дней", "Зеленый")
 
 
 @pytest.fixture
 def lawn_grass2():
-    return LawnGrass("Газонная трава 2", "Выносливая трава", 450.0, 15, "США", "5 дней", "Темно-зеленый")
+    return LawnGrass("Газонная трава 2", "Выносливая трава",
+                     450.0, 15, "США", "5 дней", "Темно-зеленый")
 
 
 def test_lawn_grass1(lawn_grass1):
@@ -39,4 +41,4 @@ def test_lawn_grass_add(lawn_grass1, lawn_grass2):
 
 def test_lawn_grass_add_error(lawn_grass1, lawn_grass2):
     with pytest.raises(TypeError):
-        result = lawn_grass1 + 1
+        lawn_grass1 + 1

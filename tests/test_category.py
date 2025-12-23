@@ -64,5 +64,3 @@ def test_category_str_1(first_category):
 
 def test_category_str_2(second_category):
     assert str(second_category) == "Телевизоры, количество продуктов: 13 шт."
-
-

@@ -40,7 +40,8 @@ def product_fixture():
 
 @pytest.fixture
 def product_add_1():
-    return Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
+    return Product("Samsung Galaxy S23 Ultra",
+                   "256GB, Серый цвет, 200MP камера", 180000.0, 5)
 
 
 @pytest.fixture
