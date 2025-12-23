@@ -30,9 +30,12 @@ class Category:
                 f"" f"Остаток: {product.quantity} шт. \n")
         return products_str
 
-    def add_product(self, product):
-        self.__products.append(product)
-        Category.product_count += 1
+    def add_product(self, product: Product):
+        if isinstance(product, Product):
+            self.__products.append(product)
+            Category.product_count += 1
+        else:
+            raise TypeError
 
     @property
     def products_in_list(self):
