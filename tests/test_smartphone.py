@@ -2,10 +2,13 @@ import pytest
 
 from src.smartphone import Smartphone
 
+
 @pytest.fixture
 def product_smartphone1():
-    return Smartphone("Samsung Galaxy S23 Ultra", "Samsung Galaxy S23 Ultra", 180000.0, 5, 95.5,
-                         "S23 Ultra", 256, "Серый")
+    return Smartphone(
+        "Samsung Galaxy S23 Ultra", "Samsung Galaxy S23 Ultra", 180000.0, 5, 95.5, "S23 Ultra", 256, "Серый"
+    )
+
 
 @pytest.fixture
 def product_smartphone2():
@@ -33,10 +36,17 @@ def test_product_smartphone2(product_smartphone2):
     assert product_smartphone2.memory == 512
     assert product_smartphone2.color == "Gray space"
 
+
 def test_smartphone_add(product_smartphone1, product_smartphone2):
-    assert product_smartphone1.price * product_smartphone1.quantity + product_smartphone2.price * product_smartphone2.quantity == 2580000.0
+    assert (
+        product_smartphone1.price * product_smartphone1.quantity
+        + product_smartphone2.price * product_smartphone2.quantity
+        == 2580000.0
+    )
 
 
 def test_lawn_smartphone_add_error(product_smartphone1, product_smartphone2):
     with pytest.raises(TypeError):
-        product_smartphone2 + 1
+        result = product_smartphone2 + 1
+
+

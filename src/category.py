@@ -27,7 +27,9 @@ class Category:
         for product in self.__products:
             products_str += (
                 f"{product.name}, {product.description}, {product.price} руб. "
-                f"" f"Остаток: {product.quantity} шт. \n")
+                f""
+                f"Остаток: {product.quantity} шт. \n"
+            )
         return products_str
 
     def add_product(self, product: Product):
