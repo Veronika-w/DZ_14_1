@@ -22,7 +22,7 @@ class Category:
         return f"{self.name}, количество продуктов: {count} шт."
 
     @property
-    def products_list(self):
+    def products(self):
         products_str = ""
         for product in self.__products:
             products_str += (
