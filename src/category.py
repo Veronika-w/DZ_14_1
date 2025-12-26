@@ -1,5 +1,5 @@
-from src.product import Product
 from src.exceptions import ZeroQuantity
+from src.product import Product
 
 
 class Category:
