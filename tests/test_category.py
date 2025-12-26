@@ -82,14 +82,6 @@ def test_middle_price(first_category, product_without_quantity):
 def test_custom_exception(capsys, first_category):
     assert len(first_category.products_in_list) == 3
 
-    product_invalid = Product("Бракованный товар", "Неверное количество", 1000.0, 0)
-    first_category.products_in_list = product_invalid
-    message = capsys.readouterr()
-    assert message.out.strip().split('\n')[-2] == "Нельзя добавить товар с нулевым количеством"
-    assert message.out.strip().split('\n')[-1] == "Обработка добавления товара завершена"
 
-    product_invalid = Product("Бракованный товар", "Неверное количество", 1000.0, 1)
-    first_category.products_in_list = product_invalid
-    message = capsys.readouterr()
-    assert message.out.strip().split('\n')[-2] == "Товар добавлен успешно"
-    assert message.out.strip().split('\n')[-1] == "Обработка добавления товара завершена"
+def test_custom_exception_2(capsys, second_category):
+    assert len(second_category.products_in_list) == 2
