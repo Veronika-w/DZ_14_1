@@ -41,6 +41,14 @@ def second_category():
         ],
     )
 
+@pytest.fixture()
+def product_without_quantity():
+    return Category(
+        name="Смартфоны",
+        description="Смартфоны, как средство не только коммуникации, "
+                    "но и получения дополнительных функций для удобства жизни",
+        )
+
 
 def test_category_init(first_category, second_category):
     assert first_category.name == "Смартфоны"
@@ -64,3 +72,24 @@ def test_category_str_1(first_category):
 
 def test_category_str_2(second_category):
     assert str(second_category) == "Телевизоры, количество продуктов: 13 шт."
+
+
+def test_middle_price(first_category, product_without_quantity):
+    assert first_category.middle_price() == 140333.33333333334
+    assert product_without_quantity.middle_price() == 0
+
+
+def test_custom_exception(capsys, first_category):
+    assert len(first_category.products_in_list) == 3
+
+    product_invalid = Product("Бракованный товар", "Неверное количество", 1000.0, 0)
+    first_category.products_in_list = product_invalid
+    message = capsys.readouterr()
+    assert message.out.strip().split('\n')[-2] == "Нельзя добавить товар с нулевым количеством"
+    assert message.out.strip().split('\n')[-1] == "Обработка добавления товара завершена"
+
+    product_invalid = Product("Бракованный товар", "Неверное количество", 1000.0, 1)
+    first_category.products_in_list = product_invalid
+    message = capsys.readouterr()
+    assert message.out.strip().split('\n')[-2] == "Товар добавлен успешно"
+    assert message.out.strip().split('\n')[-1] == "Обработка добавления товара завершена"
